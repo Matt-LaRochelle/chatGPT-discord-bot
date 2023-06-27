@@ -29,8 +29,8 @@ client.on('messageCreate', async function(message){
             ChatGPT: Hello how are you?\n\
             ${message.author.username}: ${message.content}\n\
             ChatGPT:`,
-            temperature: 0.9,
-            max_tokens: 100,
+            temperature: 0.3,
+            max_tokens: 200,
             stop: ["ChatGPT:", "Adrian Twarog:"]
         })
         message.reply(`${gptResponse.data.choices[0].text}`)
