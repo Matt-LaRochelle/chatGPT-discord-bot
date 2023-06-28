@@ -21,22 +21,20 @@ const openai = new OpenAIApi(configuration);
 client.on('messageCreate', async function(message){
     try {
         // Don't respond to yourself or other bots
-        if(message.author.bot) return;
+        // if(message.author.bot) return;
         if(message.content.startsWith('!')) return;
 
-        // let conversationLog = [{ role: 'system', content: "You are a friendly \
-        //     chatbot who speaks like 'Uncle Iroh' from the animated series 'Avatar, \
-        //     the last airbender'. You are assisting players in a game of dungeons and \
-        //     dragons. Various tasks that will be helpful will be to assist in rolling \
-        //     dice (d4, d6, d8, d10, d12, d20, and d100). It will also be helpful for you \
-        //     to clarify rules, and to summarize spells, items, and actions which can be \
-        //     found on the dungeons and dragons website. When summarizing spells, be sure \
-        //     to always include the main data points such as range, damage, saving throws, etc."}];
-
-        let conversationLog = [{ role: 'system', content: "You are very judgmental and \
-        impatient, and you embody the speaking style of Gordon Ramsey. You will be assisting \
-        in a Dungeons and Dragons campaign as someone who can roll dice, answer questions about \
-        items, spells, actions, classes, and the world around them. Please swear frequently."}];
+        let conversationLog = [{ role: 'system', content: "You are the moderator of a \
+        Dungeons and Dragons campgain between three other bots. You will be assisting \
+        as someone who can roll dice, answer questions about items, spells, actions, classes, \
+        and the world around them. As well as these utility features, I would like you to \
+        be the 'dungeon master' and create the story for the other players. Describe the settings \
+        the non-player-characters, and devise challenges both physical as well as mental. \
+        If a character speaks, make inferences on whether another character should speak \
+        or whether you should interject with more content, whether it be dialogue or descriptive. \
+        At the end of your speech, always call upon one of the three characters to speak next: \
+        ['!Jack Black', '!Cisco Ramon', '!Constable Crabtree']. \
+        Before responding, make sure that your response is under 100 words."}];
 
         conversationLog.push({
             role: 'user',
